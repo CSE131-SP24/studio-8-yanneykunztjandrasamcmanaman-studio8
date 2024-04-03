@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Quiz {
 
 	private Question[] questions;
+	private int totPts;
 	
 	public Quiz(Question[] questions) {
 		this.questions = questions;
@@ -26,7 +27,13 @@ public class Quiz {
 	}
 	
 	public void takeQuiz() {
-		//FIXME
+		totPts = 0;
+		for(int n = 0; n < questions.length ; n++) {
+			questions[n].displayPrompt();
+			//questions[n].checkAnswer(getUserAnswer());
+			totPts += questions[n].checkAnswer(getUserAnswer());
+		}
+		System.out.println(totPts);
 	}
 	
 	public static void main(String[] args) {
@@ -42,5 +49,6 @@ public class Quiz {
 		
 		Quiz studio8quiz = new Quiz(questions);
 		studio8quiz.takeQuiz();
+		
 	}
 }
